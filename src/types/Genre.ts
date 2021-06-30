@@ -1,5 +1,5 @@
 export interface Genre {
-  _id: string;
+  _id?: string;
   name: string;
-  [key: string]: string;
+  [key: string]: string | undefined;
 }

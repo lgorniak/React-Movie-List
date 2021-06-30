@@ -9,7 +9,7 @@ interface Props {
   selectedItem: Genre | undefined;
 }
 
-const ListGroup = (props: Props): ReactElement => {
+export default function ListGroup(props: Props): ReactElement {
   const { items, textProperty, valueProperty, onItemSelect, selectedItem } =
     props;
   return (
@@ -17,21 +17,21 @@ const ListGroup = (props: Props): ReactElement => {
       {items.map((item) => (
         <li
           onClick={() => onItemSelect(item)}
-          key={item[valueProperty || ListGroup.defaultProps.textProperty]}
+          key={item._id}
           className={
             item === selectedItem ? "list-group-item active" : "list-group-item"
           }
         >
-          {item[textProperty || ListGroup.defaultProps.valueProperty]}
+          {item.name}
         </li>
       ))}
     </ul>
   );
-};
+}
 
 ListGroup.defaultProps = {
   textProperty: "name",
   valueProperty: "_id",
 };
 
-export default ListGroup;
+

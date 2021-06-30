@@ -8,7 +8,6 @@ import MovieSecond from "./moviesSecond";
 export default function App(): ReactElement {
   return (
     <div>
-      <Movies />
       <MovieSecond />
     </div>
   );
