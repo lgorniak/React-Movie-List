@@ -19,6 +19,7 @@ export default function TableHeader(props: Props): ReactElement {
         ? (sortColumn.order = "desc")
         : (sortColumn.order = "asc");
     } else {
+      sortColumn.path = path;
       sortColumn.order = "asc";
     }
     handleSort(sortColumn);

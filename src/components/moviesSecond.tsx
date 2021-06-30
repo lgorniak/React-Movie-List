@@ -18,7 +18,6 @@ interface Props {
 
 
 export default function MovieSecond(): ReactElement {
-  console.log("working");
   const [movies, setMovies] = useState<Movie[]>(getMovies());
   const [genres, setGenres] = useState<Genre[]>([
     { _id: "", name: "All Genres" },
@@ -46,7 +45,6 @@ export default function MovieSecond(): ReactElement {
   };
 
   const handleSort = (sort: Sort): void => {
-    console.log(sort);
     setSortColumn(sort);
   };
 

@@ -16,21 +16,23 @@ export default function MoviesTable(props: Props): ReactElement {
   const raiseSort = (path: string): void => {
     const sortColumn = { ...setSortColumn };
 
+    console.log(path);
     if (sortColumn.path === path) {
       sortColumn.order === "asc"
         ? (sortColumn.order = "desc")
         : (sortColumn.order = "asc");
     } else {
+      sortColumn.path = path;
       sortColumn.order = "asc";
     }
     handleSort(sortColumn);
   };
 
   const columns = [
-    { path: "title ", label: "title" },
-    { path: "genre.name ", label: "genre" },
-    { path: "numberInStock ", label: "Stock" },
-    { path: "dailyRentalRate ", label: "Rate" },
+    { path: "title", label: "Title" },
+    { path: "genre.name", label: "Genre" },
+    { path: "numberInStock", label: "Stock" },
+    { path: "dailyRentalRate", label: "Rate" },
     { key: "delete" },
   ];
 
@@ -41,16 +43,6 @@ export default function MoviesTable(props: Props): ReactElement {
         handleSort={handleSort}
         setSortColumn={setSortColumn}
       />
-
-      <thead>
-        <tr>
-          <th onClick={() => raiseSort("title")}>Title</th>
-          <th onClick={() => raiseSort("genre.name")}>Genre</th>
-          <th onClick={() => raiseSort("numberInStock")}>Stock</th>
-          <th onClick={() => raiseSort("dailyRentalRate")}>Rate</th>
-          <th />
-        </tr>
-      </thead>
       <tbody>
         {pageMovies.map((movie: Movie) => (
           <tr key={movie._id}>
