@@ -17,12 +17,12 @@ const ListGroup = (props: Props): ReactElement => {
       {items.map((item) => (
         <li
           onClick={() => onItemSelect(item)}
-          key={item[valueProperty || "name"]}
+          key={item[valueProperty || ListGroup.defaultProps.textProperty]}
           className={
             item === selectedItem ? "list-group-item active" : "list-group-item"
           }
         >
-          {item[textProperty || "_id"]}
+          {item[textProperty || ListGroup.defaultProps.valueProperty]}
         </li>
       ))}
     </ul>
