@@ -5,8 +5,8 @@ import "font-awesome/css/font-awesome.css";
 
 export default function App(): ReactElement {
   return (
-      <p>
-        <Movies />
-      </p>
+    <p>
+      <Movies />
+    </p>
   );
 }
