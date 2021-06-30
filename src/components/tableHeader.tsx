@@ -28,14 +28,10 @@ export default function TableHeader(props: Props): ReactElement {
     <thead>
       <tr>
         {columns.map((column) => {
-          const obj: any = {};
-          if (typeof column.path == "string") {
-            obj.onClick = () => raiseSort(column.path);
-          }
           return (
             <th
               key={column.path || column.key}
-              onClick={column.path ? () => raiseSort(column.path) : undefined}
+              onClick={() => column.path && raiseSort(column.path)}
             >
               {column.label}
             </th>
