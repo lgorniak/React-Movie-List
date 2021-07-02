@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Movie } from "../types/Movie";
 import { Sort } from "../types/Sort";
+import TableBody from "./tableBody";
 import TableHeader from "./tableHeader";
 
 interface Props {
@@ -16,7 +17,6 @@ export default function MoviesTable(props: Props): ReactElement {
   const raiseSort = (path: string): void => {
     const sortColumn = { ...setSortColumn };
 
-    console.log(path);
     if (sortColumn.path === path) {
       sortColumn.order === "asc"
         ? (sortColumn.order = "desc")
@@ -33,7 +33,19 @@ export default function MoviesTable(props: Props): ReactElement {
     { path: "genre.name", label: "Genre" },
     { path: "numberInStock", label: "Stock" },
     { path: "dailyRentalRate", label: "Rate" },
-    { key: "delete" },
+    {
+      key: "delete",
+      content: function deleteButton(movie: Movie) {
+        return (
+          <button
+            onClick={() => handleDelete(movie)}
+            className="btn btn-danger btn-small"
+          >
+            Delete
+          </button>
+        );
+      },
+    },
   ];
 
   return (
@@ -43,24 +55,12 @@ export default function MoviesTable(props: Props): ReactElement {
         handleSort={handleSort}
         setSortColumn={setSortColumn}
       />
-      <tbody>
-        {pageMovies.map((movie: Movie) => (
-          <tr key={movie._id}>
-            <td>{movie.title}</td>
-            <td>{movie.genre.name}</td>
-            <td>{movie.numberInStock}</td>
-            <td>{movie.dailyRentalRate}</td>
-            <td>
-              <button
-                onClick={() => handleDelete(movie)}
-                className="btn btn-danger btn-small"
-              >
-                Delete
-              </button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
+      <TableBody<Movie>
+        data={pageMovies}
+        handleDelete={handleDelete}
+        columns={columns}
+      />
     </table>
+    
   );
 }

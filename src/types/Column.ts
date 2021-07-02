@@ -1,7 +1,12 @@
-import { Sort } from "./Sort";
+import { ReactElement } from "react";
+import { Movie } from "./Movie";
 
-export interface Column {
+type Content<Y> = {_id:string;} & Y;
+
+
+export interface Column<Y> {
   path?: string;
   label?: string;
   key?: string;
+  content?: ((item: Content<Y>) => ReactElement);
 }
