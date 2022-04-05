@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# React App
+A Movie List.
+Created with functions based components an typed with typescript also using generics.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
