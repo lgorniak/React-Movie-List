@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { get } from "lodash";
 import React, { ReactElement } from "react";
 import { Column } from "../types/Column";
 
@@ -11,13 +11,13 @@ interface Prop<Y> {
 export default function TableBody<Y extends { _id: string }>(
   props: Prop<Y>
 ): ReactElement {
-  const { data, columns, handleDelete } = props;
+  const { data, columns } = props;
 
   const renderCell = (item: Y, column: Column<Y>) => {
     if (column.content) {
       return column.content(item);
     }
-    return _.get(item, column.path || "");
+    return get(item, column.path || "");
   };
 
   const returnKey = (item: Y, column: Column<Y>) => {

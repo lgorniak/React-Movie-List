@@ -7,7 +7,7 @@ import ListGroup from "./listGroup";
 import { Movie } from "../types/Movie";
 import { Genre } from "../types/Genre";
 import MovieTable from "./moviesTable";
-import _, { filter } from "lodash";
+import _ from "lodash";
 import { Sort } from "../types/Sort";
 
 interface Props {
@@ -19,12 +19,12 @@ interface Props {
 
 export default function MovieSecond(): ReactElement {
   const [movies, setMovies] = useState<Movie[]>(getMovies());
-  const [genres, setGenres] = useState<Genre[]>([
+  const [genres] = useState<Genre[]>([
     { _id: "", name: "All Genres" },
     ...getGenres(),
   ]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(4);
+  const [pageSize] = useState<number>(4);
   const [selectedGenre, setSelectedGenre] = useState<Genre | undefined>();
   const [sortColumn, setSortColumn] = useState<Sort>({
     path: "title",

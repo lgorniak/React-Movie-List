@@ -10,8 +10,7 @@ interface Props {
 }
 
 export default function ListGroup(props: Props): ReactElement {
-  const { items, textProperty, valueProperty, onItemSelect, selectedItem } =
-    props;
+  const { items, onItemSelect, selectedItem } = props;
   return (
     <ul className="list-group">
       {items.map((item) => (
